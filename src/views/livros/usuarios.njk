@@ -1,0 +1,74 @@
+{% extends "layout.njk" %}
+
+{% set title = "Cadastro de Usuário" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm">
+<h1 class="my-5 text-center">{{ title }}</h1>
+
+<hr>
+  <form method="post" enctype="form-data" action="/livros/usuarios/action">
+
+    <div class="form-group">
+    <label>Nome: </label>
+    <input class="form-control" type="text" name="nome"  required />
+    </div>
+
+    <div class="form-group">
+    <label>Idade: </label>
+    <input class="form-control" type="text" name="idade" required/>
+    </div>
+ <div class="form-group">
+    <label>Endereço: </label>
+    <input class="form-control" type="text" name="endereco" required/>
+    </div>
+
+ <div class="form-group">
+    <label>E-mail: </label>
+    <input class="form-control" type="text" name="email" required/>
+    </div>
+
+ <div class="form-group">
+    <label>Telefone: </label>
+    <input class="form-control" type="text" name="telefone" required/>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+  </form>
+
+</div>
+
+
+<div class="col-sm">
+<h1 class="my-5 text-center">Lista de Usuário</h1>
+<hr>
+<section class="card-deck">
+
+<table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome / Idade</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Fone</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for userget in users %}
+
+   <tr>
+      <th scope="row">{{ userget.id }}</th>
+      <td>{{ userget.nome }} / {{ userget.idade }}</td>
+      <td>{{ userget.email }}</td>
+      <td>{{ userget.telefone }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</section></div>
+{% endblock %}
